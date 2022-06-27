@@ -1,0 +1,10 @@
+version: '3.2'
+services:
+  webserver:
+    build: ./php-81-apache-xdebug-30
+    ports:
+      - "6080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      XDEBUG_CONFIG: "client_host=host.docker.internal"

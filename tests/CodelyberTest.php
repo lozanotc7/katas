@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CodelyTv\Tests;
+namespace Katas\Tests;
 
-use CodelyTv\Codelyber;
+use Katas\Codelyber;
 use PHPUnit\Framework\TestCase;
 
 final class CodelyberTest extends TestCase
