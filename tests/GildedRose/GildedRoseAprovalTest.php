@@ -8,10 +8,11 @@ use Katas\GildedRose\GildedRose;
 use Katas\GildedRose\Item;
 use PHPUnit\Framework\TestCase;
 
-class GildedRoseTest extends TestCase
+class GildedRoseAprovalTest extends TestCase
 {
     private array $items;
     private GildedRose $gildedRose;
+    private $expected;
 
     public function setUp(): void
     {
@@ -28,23 +29,28 @@ class GildedRoseTest extends TestCase
             new Item('Conjured Mana Cake', 3, 6),
         ];
 
+        // Class instance
         $this->gildedRose = new GildedRose($this->items);
+
+        // load from file to improve readability
+        $this->expected = json_decode(file_get_contents('TestFixture/json_expected_fixture.json'), true);
     }
 
-    public function testDay0():void
+    public function test_Day_0(): void
     {
-        $expected = [
-            '+5 Dexterity Vest, 10, 20',
-            'Aged Brie, 2, 0',
-            'Elixir of the Mongoose, 5, 7',
-            'Sulfuras, Hand of Ragnaros, 0, 80',
-            'Sulfuras, Hand of Ragnaros, -1, 80',
-            'Backstage passes to a TAFKAL80ETC concert, 15, 20',
-            'Backstage passes to a TAFKAL80ETC concert, 10, 49',
-            'Backstage passes to a TAFKAL80ETC concert, 5, 49',
-            'Conjured Mana Cake, 3, 6',
-        ];
+        $expected = $this->expected[0];
 
-        $this->assertEquals(array_map(fn ($item) => "$item", $this->items), $expected);
+        $this->assertEquals(array_map(fn($item) => "$item", $this->items), $expected);
+    }
+
+    public function test_Days_1_to_30(): void
+    {
+        $day = 1;
+        while ($day <= 30) {
+            $this->gildedRose->updateQuality();
+            $expected = $this->expected[ $day ];
+            $this->assertEquals(array_map(fn($item) => "$item", $this->items), $expected);
+            $day += 1;
+        }
     }
 }
