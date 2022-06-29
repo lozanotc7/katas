@@ -17,7 +17,15 @@ class ConjuredItem
 
     public function update()
     {
+        $this->sell_in--;
 
+        if($this->quality > 0){
+            $this->quality--;
+        }
+
+        if ($this->quality > 0) {
+            $this->quality--;
+        }
     }
 
     public function __toString(): string
