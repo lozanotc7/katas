@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Katas\Tests\GildedRose;
 
 use Katas\GildedRose\Domain\AgedBrieItem;
+use Katas\GildedRose\Domain\ConjuredItem;
 use Katas\GildedRose\Domain\StandardItem;
 use Katas\GildedRose\Domain\SulfurasItem;
 use Katas\GildedRose\Domain\TicketItem;
@@ -156,5 +157,16 @@ class GildedRoseUnitTest extends TestCase
         $gildedRose->updateQuality();
 
         $this->assertEquals(0, $item->quality);
+    }
+
+    public function test_conjured_quality_decreases_double():void
+    {
+        $item = new ConjuredItem(10, 30);
+
+        $gildedRose = new GildedRose([ $item ]);
+
+        $gildedRose->updateQuality();
+
+        $this->assertEquals(28, $item->quality);
     }
 }

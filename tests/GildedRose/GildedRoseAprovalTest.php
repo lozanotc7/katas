@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Katas\Tests\GildedRose;
 
 use Katas\GildedRose\Domain\AgedBrieItem;
+use Katas\GildedRose\Domain\ConjuredItem;
 use Katas\GildedRose\Domain\StandardItem;
 use Katas\GildedRose\Domain\SulfurasItem;
 use Katas\GildedRose\Domain\TicketItem;
@@ -29,7 +30,7 @@ class GildedRoseAprovalTest extends TestCase
             new TicketItem(15, 20),
             new TicketItem(10, 49),
             new TicketItem(5, 49),
-            new StandardItem('Conjured Mana Cake', 3, 6),
+            new ConjuredItem(3, 6),
         ];
 
         // Class instance
