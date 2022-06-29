@@ -19,12 +19,11 @@ class ConjuredItem
     {
         $this->sell_in--;
 
-        if($this->quality > 0){
-            $this->quality--;
-        }
+        $this->quality--;
+        $this->quality--;
 
-        if ($this->quality > 0) {
-            $this->quality--;
+        if($this->quality <= 0){
+            $this->quality = 0;
         }
     }
 

@@ -19,12 +19,14 @@ class AgedBrieItem
     {
         $this->sell_in--;
 
-        if ($this->quality == 50) {
-            $this->quality = 50;
-        } elseif ($this->sell_in >= 0) {
+        if ($this->sell_in >= 0) {
             $this->quality += 1;
         } else {
             $this->quality += 2;
+        }
+
+        if ($this->quality >= 50) {
+            $this->quality = 50;
         }
     }
 

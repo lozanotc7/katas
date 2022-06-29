@@ -22,23 +22,15 @@ class TicketItem
         if ($this->sell_in < 0) {
             $this->quality = 0;
         } elseif ($this->sell_in < 5) {
-            if ($this->quality > 47) {
-                $this->quality = 50;
-            } else {
-                $this->quality += 3;
-            }
+            $this->quality += 3;
         } elseif ($this->sell_in < 10) {
-            if ($this->quality > 48) {
-                $this->quality = 50;
-            } else {
-                $this->quality += 2;
-            }
+            $this->quality += 2;
         } else {
-            if ($this->quality > 49) {
-                $this->quality = 50;
-            } else {
-                $this->quality++;
-            }
+            $this->quality++;
+        }
+
+        if ($this->quality > 50) {
+            $this->quality = 50;
         }
     }
 
