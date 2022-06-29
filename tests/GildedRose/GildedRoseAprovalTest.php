@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Katas\Tests\GildedRose;
 
+use Katas\GildedRose\Domain\AgedBrieItem;
+use Katas\GildedRose\Domain\StandardItem;
+use Katas\GildedRose\Domain\SulfurasItem;
+use Katas\GildedRose\Domain\TicketItem;
 use Katas\GildedRose\GildedRose;
-use Katas\GildedRose\Item;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseAprovalTest extends TestCase
@@ -18,15 +21,15 @@ class GildedRoseAprovalTest extends TestCase
     {
         $this->items = [
             // name, sellIn, quality
-            new Item('+5 Dexterity Vest', 10, 20),
-            new Item('Aged Brie', 2, 0),
-            new Item('Elixir of the Mongoose', 5, 7),
-            new Item('Sulfuras, Hand of Ragnaros', 0, 80),
-            new Item('Sulfuras, Hand of Ragnaros', -1, 80),
-            new Item('Backstage passes to a TAFKAL80ETC concert', 15, 20),
-            new Item('Backstage passes to a TAFKAL80ETC concert', 10, 49),
-            new Item('Backstage passes to a TAFKAL80ETC concert', 5, 49),
-            new Item('Conjured Mana Cake', 3, 6),
+            new StandardItem('+5 Dexterity Vest', 10, 20),
+            new AgedBrieItem( 2, 0),
+            new StandardItem('Elixir of the Mongoose', 5, 7),
+            new SulfurasItem( 0, 80),
+            new SulfurasItem( -1, 80),
+            new TicketItem(15, 20),
+            new TicketItem(10, 49),
+            new TicketItem(5, 49),
+            new StandardItem('Conjured Mana Cake', 3, 6),
         ];
 
         // Class instance
