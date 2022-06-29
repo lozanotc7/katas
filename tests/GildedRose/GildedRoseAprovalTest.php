@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace Katas\Tests\GildedRose;
 
-use Katas\GildedRose\Domain\AgedBrieItem;
-use Katas\GildedRose\Domain\ConjuredItem;
-use Katas\GildedRose\Domain\StandardItem;
-use Katas\GildedRose\Domain\SulfurasItem;
-use Katas\GildedRose\Domain\TicketItem;
+use Katas\GildedRose\Domain\ItemFactory;
 use Katas\GildedRose\GildedRose;
 use PHPUnit\Framework\TestCase;
 
@@ -16,24 +12,23 @@ class GildedRoseAprovalTest extends TestCase
 {
     private array $items;
     private GildedRose $gildedRose;
-    private $expected;
+    private array $expected;
 
     public function setUp(): void
     {
         $this->items = [
             // name, sellIn, quality
-            new StandardItem('+5 Dexterity Vest', 10, 20),
-            new AgedBrieItem( 2, 0),
-            new StandardItem('Elixir of the Mongoose', 5, 7),
-            new SulfurasItem( 0, 80),
-            new SulfurasItem( -1, 80),
-            new TicketItem(15, 20),
-            new TicketItem(10, 49),
-            new TicketItem(5, 49),
-            new ConjuredItem(3, 6),
+            ItemFactory::create('+5 Dexterity Vest', 10, 20),
+            ItemFactory::create('Aged Brie', 2, 0),
+            ItemFactory::create('Elixir of the Mongoose',5, 7),
+            ItemFactory::create('Sulfuras, Hand of Ragnaros',0, 80),
+            ItemFactory::create('Sulfuras, Hand of Ragnaros',-1, 80),
+            ItemFactory::create('Backstage passes to a TAFKAL80ETC concert',15, 20),
+            ItemFactory::create('Backstage passes to a TAFKAL80ETC concert',10, 49),
+            ItemFactory::create('Backstage passes to a TAFKAL80ETC concert',5, 49),
+            ItemFactory::create('Conjured Mana Cake', 3, 6),
         ];
 
-        // Class instance
         $this->gildedRose = new GildedRose($this->items);
 
         // load from file to improve readability
