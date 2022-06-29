@@ -13,6 +13,17 @@ final class GildedRose
 
     public function __construct(array $items)
     {
+        array_walk(
+            $items,
+            function ($item) {
+                if ($item->name == 'Sulfuras, Hand of Ragnaros') {
+                    $item->quality = 80;
+                } elseif($item->quality > 50){
+                    $item->quality = 50;
+                }
+            },
+        );
+
         $this->items = $items;
     }
 
