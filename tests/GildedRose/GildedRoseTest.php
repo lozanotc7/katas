@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests;
+namespace Katas\Tests\GildedRose;
 
-use GildedRose\GildedRose;
-use GildedRose\Item;
+use Katas\GildedRose\GildedRose;
+use Katas\GildedRose\Item;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
