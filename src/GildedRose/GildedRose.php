@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace Katas\GildedRose;
 
+use Katas\GildedRose\Items\Domain\UpdatableItemFactory;
+
 final class GildedRose
 {
-    /**
-     * @var Item[]
-     */
     private $items;
 
-    public function __construct(array $items)
+    public function __construct(Item ...$items)
     {
-        $this->items = $items;
+        $this->items = array_map(
+            fn ($item) => UpdatableItemFactory::create($item),
+            $items
+        );
     }
 
     public function updateQuality(): void
@@ -21,5 +23,13 @@ final class GildedRose
         foreach ($this->items as $item) {
             $item->update();
         }
+    }
+
+    public function items():array
+    {
+        return array_map(
+            fn ($item) => new Item($item->name(), $item->sell_in(), $item->quality()->value()),
+            $this->items
+        );
     }
 }
