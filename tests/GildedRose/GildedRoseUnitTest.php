@@ -46,9 +46,9 @@ class GildedRoseUnitTest extends TestCase
 
     public function test_normal_item_max_quality()
     {
-        $item = UpdatableItemFactory::create(new Item('Cool Item', 10, 100));
+        $UpdatableItem = UpdatableItemFactory::create(new Item('Cool Item', 10, 100));
 
-        $this->assertEquals(50, $item->quality()->value());
+        $this->assertEquals(50, $UpdatableItem->item()->quality);
     }
 
     public function test_aged_brie(): void
@@ -81,9 +81,9 @@ class GildedRoseUnitTest extends TestCase
 
     public function test_aged_brie_item_max_quality()
     {
-        $item = UpdatableItemFactory::create(new Item('Aged Brie', 10, 100));
+        $updatableItem = UpdatableItemFactory::create(new Item('Aged Brie', 10, 100));
 
-        $this->assertEquals(50, $item->quality()->value());
+        $this->assertEquals(50, $updatableItem->item()->quality);
     }
 
     public function test_sulfuras_dont_decreases(): void
@@ -107,9 +107,9 @@ class GildedRoseUnitTest extends TestCase
 
     public function test_sulfuras_item_max_quality()
     {
-        $item = UpdatableItemFactory::create(new Item('Sulfuras, Hand of Ragnaros', 10, 100));
+        $UpdatableItem = UpdatableItemFactory::create(new Item('Sulfuras, Hand of Ragnaros', 10, 100));
 
-        $this->assertEquals(80, $item->quality()->value());
+        $this->assertEquals(80, $UpdatableItem->item()->quality);
     }
 
     public function test_tickets(): void
@@ -151,9 +151,9 @@ class GildedRoseUnitTest extends TestCase
 
     public function test_tickets_brie_item_max_quality()
     {
-        $item = UpdatableItemFactory::create(new Item('Backstage passes to a TAFKAL80ETC concert', 10, 100));
+        $UpdatableItem = UpdatableItemFactory::create(new Item('Backstage passes to a TAFKAL80ETC concert', 10, 100));
 
-        $this->assertEquals(50, $item->quality()->value());
+        $this->assertEquals(50, $UpdatableItem->item()->quality);
     }
 
     public function test_conjured_quality_decreases_double(): void
@@ -167,9 +167,9 @@ class GildedRoseUnitTest extends TestCase
 
     public function test_conjured_brie_item_max_quality()
     {
-        $item = UpdatableItemFactory::create(new Item('Conjured Mana Cake', 10, 100));
+        $UpdatableItem = UpdatableItemFactory::create(new Item('Conjured Mana Cake', 10, 100));
 
-        $this->assertEquals(50, $item->quality()->value());
+        $this->assertEquals(50, $UpdatableItem->item()->quality);
     }
 
     public function test_negative_quality_is_zero()

@@ -6,7 +6,7 @@ use Katas\GildedRose\Items\Domain\ValueObjects\StandardQuality;
 
 class ConjuredItem extends BaseStandardItem
 {
-    public function update():void
+    public function update(): void
     {
         $this->sell_in--;
         $this->quality = new StandardQuality($this->quality->value() - 2);

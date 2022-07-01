@@ -13,10 +13,14 @@ abstract class Quality extends IntegerValueObject implements QualityInterface
         $this->value = $this->normalize($this->value);
     }
 
-    private function normalize(int $value):int
+    private function normalize(int $value): int
     {
-        if($value < static::MIN) return static::MIN;
-        if($value > static::MAX) return static::MAX;
+        if ($value < static::MIN) {
+            return static::MIN;
+        }
+        if ($value > static::MAX) {
+            return static::MAX;
+        }
 
         return $value;
     }

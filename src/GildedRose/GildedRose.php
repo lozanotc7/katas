@@ -13,7 +13,7 @@ final class GildedRose
     public function __construct(Item ...$items)
     {
         $this->items = array_map(
-            fn ($item) => UpdatableItemFactory::create($item),
+            fn($item) => UpdatableItemFactory::create($item),
             $items
         );
     }
@@ -25,10 +25,10 @@ final class GildedRose
         }
     }
 
-    public function items():array
+    public function items(): array
     {
         return array_map(
-            fn ($item) => new Item($item->name(), $item->sell_in(), $item->quality()->value()),
+            fn($item) => $item->item(),
             $this->items
         );
     }

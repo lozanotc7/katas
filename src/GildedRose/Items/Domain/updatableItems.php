@@ -2,13 +2,13 @@
 
 namespace Katas\GildedRose\Items\Domain;
 
-use Katas\GildedRose\Items\Domain\ValueObjects\QualityInterface;
+use Katas\GildedRose\Item;
 
 interface updatableItems
 {
-    public function __construct(string $name, int $sell_in, QualityInterface $quality);
-    public function name(): string;
-    public function sell_in(): int;
-    public function quality(): QualityInterface;
-    public function update():void;
+    public function __construct(Item $item);
+
+    public function update(): void;
+
+    public function item(): Item;
 }

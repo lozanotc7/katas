@@ -6,7 +6,7 @@ use Katas\GildedRose\Items\Domain\ValueObjects\StandardQuality;
 
 class TicketItem extends BaseStandardItem
 {
-    public function update():void
+    public function update(): void
     {
         $this->sell_in--;
         if ($this->sell_in < 0) {

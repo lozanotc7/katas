@@ -2,17 +2,23 @@
 
 namespace Katas\GildedRose\Items\Domain;
 
+use Katas\GildedRose\Item;
 use Katas\GildedRose\Items\Domain\ValueObjects\LegendaryQuality;
 use Katas\GildedRose\Items\Domain\ValueObjects\QualityInterface;
 
 class SulfurasItem extends BaseItem
 {
-    public function __construct(protected string $name, protected int $sell_in, protected QualityInterface $quality)
+    public function __construct(protected Item $item)
     {
-        parent::__construct($name, $sell_in, $quality);
+        parent::__construct($item);
     }
 
-    public function update():void
+    public function qualityType(int $quality): QualityInterface
+    {
+        return new LegendaryQuality($quality);
+    }
+
+    public function update(): void
     {
         // don't change
     }
