@@ -32,7 +32,7 @@ class GildedRoseAprovalTest extends TestCase
         $this->gildedRose = new GildedRose(...$this->items);
 
         // load from file to improve readability
-        $this->expected = json_decode(file_get_contents('TestFixture/json_expected_fixture.json'), true);
+        $this->expected = json_decode(file_get_contents(dirname(__FILE__) . '/TestFixture/json_expected_fixture.json'), true);
     }
 
     public function test_Day_0(): void
