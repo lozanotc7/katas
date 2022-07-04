@@ -10,6 +10,4 @@ RUN apt upgrade -y
 RUN apt install git -y
 
 #install Composer
-RUN curl -sS https://getcomposer.org/installer | php
-RUN php composer.phar update
-RUN php composer.phar install
+COPY --from=composer /usr/bin/composer /usr/bin/composer
