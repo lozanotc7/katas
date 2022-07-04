@@ -10,6 +10,9 @@ There is one branch for each kata and i'm goint to try to keep every useful comm
 Feel free to use any content in this repository.
 * [Codely Tv Original Read-me][link-original-readme]
 
+## Gilded Rose Kata
+
+[Final Thoughts](https://github.com/lozanotc7/katas/blob/Katas/GildedRose_v2/src/GildedRose/FinalThoughts.md)
 
 ## License
 
