@@ -15,7 +15,8 @@ class Delivery
     public function __construct(
         public readonly Uuid $id,
         public readonly array $productIds,
-        public readonly Address $address
+        private Address $address,
+        private bool $confirmed = false
     ) {
         $this->maxThreeProdductsCheck($productIds);
     }
@@ -24,15 +25,42 @@ class Delivery
     {
         $delivery = new self($id, $productsIds, $address);
 
-        // throw new Delivery Event
-
         return $delivery;
+    }
+
+    public function isConfirmed()
+    {
+        return $this->confirmed;
+    }
+
+    public function confirm()
+    {
+        $this->confirmed = true;
+    }
+
+    public function address()
+    {
+        return $this->address;
+    }
+
+    public function setAddress(Address $address)
+    {
+        $this->guardCantChangeConfirmedDeliveryAddress();
+
+        $this->address = $address;
     }
 
     private function maxThreeProdductsCheck(array $productIds): void
     {
-        if(count($productIds) > 3){
+        if (count($productIds) > 3) {
             throw new \Exception('3 products maximum.');
+        }
+    }
+
+    private function guardCantChangeConfirmedDeliveryAddress()
+    {
+        if($this->isConfirmed()){
+            throw new \Exception("Can't change already confirmed delivery address");
         }
     }
 }

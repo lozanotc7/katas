@@ -6,7 +6,7 @@ class ProductsOnCart
 {
     private array $products;
 
-    public function __construct(Product ... $products)
+    public function __construct(Product ...$products)
     {
         $this->maxThreeProdductsCheck($products);
     }
@@ -18,7 +18,7 @@ class ProductsOnCart
 
     public function add(Product $product): void
     {
-        if($this->count() >= 3){
+        if ($this->count() >= 3) {
             throw new \Exception('3 products maximum.');
         }
 
@@ -31,16 +31,17 @@ class ProductsOnCart
     {
         $initialCount = $this->count();
 
-        $this->product = array_diff($this->products, [$product]);
+        $this->product = array_diff($this->products, [ $product ]);
+    }
 
-        if($initialCount != $this->count()) {
-            // throw revoved product event
-        }
+    public function productsIds()
+    {
+        return array_walk($this->products, fn($product) => $product->id);
     }
 
     private function maxThreeProdductsCheck(array $products): void
     {
-        if(count($products) > 3){
+        if (count($products) > 3) {
             throw new \Exception('3 products maximum.');
         }
     }

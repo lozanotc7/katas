@@ -12,7 +12,20 @@ final class User
         public readonly Uuid $id,
         public readonly string $name,
         public readonly FinishedCarts $finishedCarts,
-        public readonly ?Cart $activeCart = null
+        private ?Cart $activeCart = null
     ) {
+    }
+
+    public function activeCart()
+    {
+        return $this->activeCart;
+    }
+
+    public function setActiveCart (Cart $cart) {
+        $this->activeCart = $cart;
+    }
+
+    public function clearActiveCart () {
+        $this->activeCart = null;
     }
 }

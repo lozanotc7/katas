@@ -7,6 +7,7 @@ use Katas\Shared\Domain\ValueObjects\Uuid;
 interface CartRepository
 {
     public function find(Uuid $uuid): Cart;
+    public function remove(Cart $cart): void;
     public function save(Cart $cart): void;
     public function update(Cart $cart): void;
 }
