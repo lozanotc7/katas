@@ -11,7 +11,7 @@ class Product
     public function __construct(
         public readonly Uuid $id,
         public readonly string $name,
-        public readonly float $price
+        public readonly float $price // can be a ValueObject and force only positive numbers
     ) {
     }
 }

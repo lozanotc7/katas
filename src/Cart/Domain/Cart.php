@@ -11,7 +11,6 @@ class Cart
     public function __construct(
         public readonly Uuid $id,
         public readonly string $name,
-        public readonly float $price, // can be a ValueObject and force only positive numbers
         public readonly ProductsOnCart $products
     ) {
     }
@@ -19,10 +18,9 @@ class Cart
     public static function new(
         Uuid $id,
         string $name,
-        float $price,
         ProductsOnCart $productsOnCart
     ) {
-        $cart = new self($id, $name, $price, $productsOnCart);
+        $cart = new self($id, $name, $productsOnCart);
 
         // throw new Cart Event
 
