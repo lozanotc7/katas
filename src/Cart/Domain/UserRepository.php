@@ -6,7 +6,7 @@ use Katas\Shared\Domain\ValueObjects\Uuid;
 
 interface UserRepository
 {
-   public function find(Uuid $uuid): Cart;
+   public function find(Uuid $uuid): User;
 
     public function save(User $user): void;
 
