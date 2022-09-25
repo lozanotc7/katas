@@ -1,0 +1,3 @@
+add_product:
+  path: /
+  defaults: { _controller: App\Controller\Cart\AddProduct::add }
