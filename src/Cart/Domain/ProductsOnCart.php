@@ -24,19 +24,17 @@ class ProductsOnCart
 
         $this->products[] = $product;
 
-        // throw added product event
+        // create added product event
     }
 
     public function remove(Product $product): void
     {
-        $initialCount = $this->count();
-
         $this->product = array_diff($this->products, [ $product ]);
     }
 
-    public function productsIds()
+    public function productsIds(): array
     {
-        return array_walk($this->products, fn($product) => $product->id);
+        return array_map(fn($product) => $product->id, $this->products);
     }
 
     private function maxThreeProdductsCheck(array $products): void

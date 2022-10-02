@@ -20,6 +20,8 @@ class FinishedCart
     {
         $finishedCart = new self($id, $cart, $address);
 
+        // create added product event
+
         return $finishedCart;
     }
 
