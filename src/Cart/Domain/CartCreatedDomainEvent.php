@@ -10,7 +10,6 @@ final class CartCreatedDomainEvent extends DomainEvent
 {
     public function __construct(
         string $id,
-        public readonly string $name,
         public readonly array $productsIds,
         public readonly string $userId,
         string $eventId = null,
@@ -27,7 +26,6 @@ final class CartCreatedDomainEvent extends DomainEvent
     public function toPrimitives(): array
     {
         return [
-            'name'        => $this->name,
             'productsIds' => $this->productsIds,
             'userId'      => $this->userId,
         ];
@@ -39,6 +37,6 @@ final class CartCreatedDomainEvent extends DomainEvent
         string $eventId,
         string $occurredOn
     ): DomainEvent {
-        return new self($aggregateId, $body['name'], $body['productsIds'], $body['userId'], $eventId, $occurredOn);
+        return new self($aggregateId, $body['productsIds'], $body['userId'], $eventId, $occurredOn);
     }
 }
